@@ -1,0 +1,97 @@
+
+/* I will have to use the display flex for the different element in the page, so create different div as i want them to behave differently*/
+
+body {
+
+    font-family: "Press Start 2P", system-ui, sans-serif;
+    text-align: center; 
+    background-size: cover; 
+    background-position: center;
+    background-image: url(Images/background.png);
+    display: flex;
+    flex-direction: column;     
+    align-items: center;     
+    justify-content: center;
+    }
+
+h1{
+    margin-top:50px; 
+    font-family: "Press Start 2P", system-ui, sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold; 
+    font-style: normal;
+    font-size: 50px;
+}
+
+.card {
+    background: rgba(255, 247, 228, 0.85);
+    border-radius: 18px;
+    padding: 20px 100px 100px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(2px);
+    max-width: 520px;
+    width: 100%;
+    border: 2px solid #f6d9a7;
+    margin-top: 50px;
+}
+
+.btns {
+    display:flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+}
+
+p {
+    font-family: "Press Start 2P", system-ui, sans-serif;
+    font-optical-sizing: auto;
+    font-weight: normal; 
+    font-style: normal;
+    font-size: 30px; 
+}
+
+
+button {
+  background-color: #fae5b2;
+  position: relative;
+  font-family: "Press Start 2P", system-ui, sans-serif;
+  color: #222;
+  border: none;
+  padding: 30px 50px;
+  border-radius: 8px;
+  font-size: 30px;
+  cursor: pointer;
+  transition: transform 0.08s ease, box-shadow 0.08s ease, background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #fae5b2;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+button:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+
+.maintimer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 0px;
+}
+
+
+
+#timer{
+    padding-left: 20px;
+    font-size: 80px;
+    /* margin-top: 150px; */
+}
+
+
+
+/* main div flex column */
+/* time box div flex row (o flex and that's it) */
+
