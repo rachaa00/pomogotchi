@@ -54,6 +54,13 @@ function startCountdown(totalSeconds) {
 
 
 
+
+
+
+
+
+
+
 // function startTimer() { // i need to do a while loop for seconds, one for minutes and one for hours , all inside the same function 
 
 //     //tried while loop for hour
