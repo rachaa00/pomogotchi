@@ -56,23 +56,23 @@ function startCountdown(totalSeconds) {
 
 
 
-btn15.addEventListener("click", () => {
+btn15.addEventListener("click", function() {
   selectedSeconds = 15 * 60;
   secondEl.innerText = "00:15:00";
 });
 
 
-btn30.addEventListener("click", () => {
+btn30.addEventListener("click", function() {
   selectedSeconds = 30 * 60;
   secondEl.innerText = "00:30:00";
 });
 
-btn60.addEventListener("click", () => {
+btn60.addEventListener("click", function() {
   selectedSeconds = 60 * 60;
   secondEl.innerText = "01:00:00";
 });
 
-btnStart.addEventListener("click", () => {
+btnStart.addEventListener("click", function() {
   if (selectedSeconds > 0) {
     startCountdown(selectedSeconds);
   }
