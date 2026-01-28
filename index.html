@@ -10,19 +10,15 @@
         <h1>Pomogotchi</h1>
         <main class="card">
             <div class="btns">
-                <button onclick="startCountdown(15*60)">15 min</button>
-                <button onclick = "startCountdown(30*60)">30 min</button>
-                <button onclick = "startCountdown(60*60)">60 min</button>
+                <button id = "btn15" >15 min</button>
+                <button id = "btn30" >30 min</button>
+                <button id = "btn60" >60 min</button>
             </div>
             <div class="maintimer">
-                <!-- <p id = "hour"></p>
-                <p>:</p>
-                <p id = "minute"></p>
-                <p>:</p> -->
                 <p id = "timer">01:00:00</p>
             </div>
             <div>
-                <button onclick="startCountdown(60*60)">Start</button>
+                <button id = "btnStart" onclick="startCountdown(60*60)">Start</button>
             </div>
         </main>
         </body>
