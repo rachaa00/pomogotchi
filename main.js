@@ -24,6 +24,8 @@ const btnStart = document.getElementById('btnStart');
 
 //right code for countdown
 
+let selectedSeconds = 0;
+
 function startCountdown(totalSeconds) {
   const secondEl = document.getElementById('timer');
   let remaining = totalSeconds;
@@ -54,6 +56,24 @@ function startCountdown(totalSeconds) {
 
 
 
-btn15.addEventListener("click", () => startCountdown(15 * 60));
-btn30.addEventListener("click", () => startCountdown(30 * 60));
-btn60.addEventListener("click", () => startCountdown(60 * 60));
+btn15.addEventListener("click", () => {
+  selectedSeconds = 15 * 60;
+  secondEl.innerText = "00:15:00";
+});
+
+
+btn30.addEventListener("click", () => {
+  selectedSeconds = 30 * 60;
+  secondEl.innerText = "00:30:00";
+});
+
+btn60.addEventListener("click", () => {
+  selectedSeconds = 60 * 60;
+  secondEl.innerText = "01:00:00";
+});
+
+btnStart.addEventListener("click", () => {
+  if (selectedSeconds > 0) {
+    startCountdown(selectedSeconds);
+  }
+});
