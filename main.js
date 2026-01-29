@@ -33,6 +33,7 @@ function startCountdown(totalSeconds) {
   const intervalId = setInterval(() => {
     if (remaining < 0) {
       clearInterval(intervalId);
+      secondEl.innerText = "Time is up!";
       return;
     }
 
