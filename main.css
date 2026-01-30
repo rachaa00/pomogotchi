@@ -91,6 +91,11 @@ button:active {
 }
 
 
+#btnStart {
+    margin-bottom: 50px;    
+}
+
+
 
 /* main div flex column */
 /* time box div flex row (o flex and that's it) */
