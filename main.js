@@ -1,11 +1,4 @@
-
-// as of now, i just want to create a timer of 30 seconds when i click on the button and when the 30s are done, i want a string that say time is up.
-// then i will add all the basic functionalities 
-// then i will do the design 
-
-
 const secondEl = document.getElementById('timer');
-
 
 let second = Number(secondEl.innerText);
 
@@ -13,32 +6,36 @@ const btn15 = document.getElementById('btn15');
 const btn30 = document.getElementById('btn30');
 const btn60 = document.getElementById('btn60'); 
 const btnStart = document.getElementById('btnStart');
+const btnReset = document.getElementById('btnReset');
+const btnPause = document.getElementById('btnPause');
 
-
-// this funciton only will give me the message after the timer is up , so based on the timer i select the function will show the message. 
-// so example if i selcted 60 mins then the function needs to show the message after 60 mins. 
-
-//IMPORTANT: 
-// instead of creating 1 single starttime function, i can create 3 different funcions for seconds, minutes and hours to then call all the 3 f them inside the starttimer function
 
 
 //right code for countdown
 
 let selectedSeconds = 0;
+let remainingSeconds = 0;
+let intervalId = null;
+
 
 function startCountdown(totalSeconds) {
-  const secondEl = document.getElementById('timer');
-  let remaining = totalSeconds;
+  if (intervalId !== null) 
+    return;
+    remainingSeconds = totalSeconds;
 
-  const intervalId = setInterval(() => {
-    if (remaining < 0) {
+  intervalId = setInterval(() => {
+    if (remainingSeconds < 0) {
       clearInterval(intervalId);
+      intervalId = null;
+      secondEl.innerText = "Time is up!";
+      selectedSeconds = 0;
+      remainingSeconds = 0;
       return;
     }
 
-    const hours = Math.floor(remaining / 3600);
-    const minutes = Math.floor((remaining % 3600) / 60);
-    const seconds = remaining % 60;
+    const hours = Math.floor(remainingSeconds / 3600);
+    const minutes = Math.floor((remainingSeconds % 3600) / 60);
+    const seconds = remainingSeconds % 60;
 
     const h = String(hours).padStart(2, "0");
     const m = String(minutes).padStart(2, "0");
@@ -47,7 +44,7 @@ function startCountdown(totalSeconds) {
     secondEl.innerText = `${h}:${m}:${s}`;
     console.log(`${h}:${m}:${s}`);
 
-    remaining--; // passa 1 secondo
+    remainingSeconds--; // passa 1 secondo
   }, 1000);
 }
 
@@ -56,24 +53,56 @@ function startCountdown(totalSeconds) {
 
 
 
-btn15.addEventListener("click", () => {
+btn15.addEventListener("click", function() {
   selectedSeconds = 15 * 60;
   secondEl.innerText = "00:15:00";
 });
 
 
-btn30.addEventListener("click", () => {
+btn30.addEventListener("click", function() {
   selectedSeconds = 30 * 60;
   secondEl.innerText = "00:30:00";
 });
 
-btn60.addEventListener("click", () => {
+btn60.addEventListener("click", function() {
   selectedSeconds = 60 * 60;
   secondEl.innerText = "01:00:00";
 });
 
-btnStart.addEventListener("click", () => {
-  if (selectedSeconds > 0) {
-    startCountdown(selectedSeconds);
+
+btnStart.addEventListener("click", function() {
+  const startFrom = remainingSeconds > 0 ? remainingSeconds : selectedSeconds;
+  if (startFrom > 0) startCountdown(startFrom);
+});
+
+btnReset.addEventListener("click", function() {
+  if (intervalId) {
+    clearInterval(intervalId);
+    intervalId = null;
+  }
+  remainingSeconds = 0;
+  selectedSeconds = 0;
+  isPaused = false;
+  btnPause.innerText = "Pause";
+  secondEl.innerText = "00:00:00";
+});
+
+let isPaused = false;
+
+btnPause.addEventListener("click", function() {
+  if (intervalId===null && !isPaused) {
+    return;
+  }
+
+  if (!isPaused) {
+    clearInterval(intervalId);
+    intervalId = null;
+    isPaused = true;
+    btnPause.innerText = "Resume";
+  } else {
+    isPaused = false;
+    btnPause.innerText = "Pause";
+    startCountdown(remainingSeconds);
   }
 });
+
