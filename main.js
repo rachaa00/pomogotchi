@@ -19,8 +19,9 @@ let intervalId = null;
 
 
 function startCountdown(totalSeconds) {
-  if (intervalId !== null) return;
-  let remainingSeconds = totalSeconds;
+  if (intervalId !== null) 
+    return;
+    remainingSeconds = totalSeconds;
 
   intervalId = setInterval(() => {
     if (remainingSeconds < 0) {
@@ -81,10 +82,27 @@ btnReset.addEventListener("click", function() {
   }
   remainingSeconds = 0;
   selectedSeconds = 0;
+  isPaused = false;
+  btnPause.innerText = "Pause";
   secondEl.innerText = "00:00:00";
 });
 
+let isPaused = false;
 
 btnPause.addEventListener("click", function() {
+  if (intervalId===null && !isPaused) {
+    return;
+  }
 
-}); 
+  if (!isPaused) {
+    clearInterval(intervalId);
+    intervalId = null;
+    isPaused = true;
+    btnPause.innerText = "Resume";
+  } else {
+    isPaused = false;
+    btnPause.innerText = "Pause";
+    startCountdown(remainingSeconds);
+  }
+});
+

@@ -1,5 +1,7 @@
 
 /* I will have to use the display flex for the different element in the page, so create different div as i want them to behave differently*/
+/*to implement responsive design to show properly on all screens*/
+
 
 body {
 
@@ -95,7 +97,13 @@ button:active {
     margin-bottom: 50px;    
 }
 
-
+.resetPauseBtn {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 50px; 
+}
 
 /* main div flex column */
 /* time box div flex row (o flex and that's it) */
