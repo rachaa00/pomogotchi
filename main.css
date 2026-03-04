@@ -39,6 +39,7 @@ h1{
     flex-direction: row;
     gap: 20px;
     justify-content: center;
+    margin-top: 20px;
 }
 
 p {
@@ -79,17 +80,25 @@ button:active {
     align-items: center;
     margin-top: 0px;
     gap: 8px;
-    min-width: 0px;
 }
 
 #timer{
     padding-left: 20px;
+    padding-right: 10px;
     font-size: clamp(40px, 8vw, 80px);
     /* margin-top: 150px; */
 }
 
+.resetPauseBtn {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 0px; 
+}
+
 #btnStart {
-    margin-bottom: 50px;    
+    margin-bottom: 20px;    
 }
 
 .resetPauseBtn {
@@ -97,32 +106,34 @@ button:active {
     flex-direction: row;
     gap: 20px;
     justify-content: center;
-    margin-bottom: 50px; 
+    margin-bottom: 0px; 
 }
 
-#btnStart {
-    margin-bottom: 50px;    
-}
-
-.resetPauseBtn {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    justify-content: center;
-    margin-bottom: 50px; 
-}
-
-@media (max-width: 420px) {
+@media (max-width: 520px) {
   .btns, .resetPauseBtn {
     flex-direction: column;
     gap: 12px;
   }
 
   .card {
+    width: calc(100% - 40px);
     padding: 16px 4vw 40px;
+    margin-left: 16px;
+    margin-right: 16px;
   }
 
-  p {
-    font-size: clamp(14px, 4vw, 30px);
+  #timer {
+    font-size: 32px;
   }
+
+  h1{
+    font-size: 30px;
+  }
+
+  body{
+    background-size: cover; 
+    background-position: center;
+    background-image: url(Images/mobile-background.png);
+  }
+
 }
