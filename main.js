@@ -8,15 +8,14 @@ const btn60 = document.getElementById('btn60');
 const btnStart = document.getElementById('btnStart');
 const btnReset = document.getElementById('btnReset');
 const btnPause = document.getElementById('btnPause');
+const sound = document.getElementById("timerSound");
 
-
-
-//right code for countdown
 
 let selectedSeconds = 0;
 let remainingSeconds = 0;
 let intervalId = null;
 
+//main countdown function
 
 function startCountdown(totalSeconds) {
   if (intervalId !== null) 
@@ -28,6 +27,7 @@ function startCountdown(totalSeconds) {
       clearInterval(intervalId);
       intervalId = null;
       secondEl.innerText = "Time is up!";
+      sound.play();
       selectedSeconds = 0;
       remainingSeconds = 0;
       return;
@@ -48,9 +48,8 @@ function startCountdown(totalSeconds) {
   }, 1000);
 }
 
-// Esempio: countdown di 1 ora
-//startCountdown(60 * 60); // 3600 secondi
 
+//buttons
 
 
 btn15.addEventListener("click", function() {
