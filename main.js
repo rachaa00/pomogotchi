@@ -27,7 +27,8 @@ function startCountdown(totalSeconds) {
       clearInterval(intervalId);
       intervalId = null;
       secondEl.innerText = "Time is up!";
-      sound.play();
+      sound.currentTime = 0;
+      sound.play().catch(() => {});
       selectedSeconds = 0;
       remainingSeconds = 0;
       return;
