@@ -1,139 +1,70 @@
+﻿* { box-sizing: border-box; }
 body {
-    font-family: "Press Start 2P", system-ui, sans-serif;
-    text-align: center; 
-    background-size: cover; 
-    background-position: center;
-    background-image: url(Images/background.png);
-    display: flex;
-    flex-direction: column;     
-    align-items: center;     
-    justify-content: center;
-    min-height: 100vh;
-    padding: 20px;
-    box-sizing: border-box;
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  background: #d9d1e5;
+  color: #44364f;
+  font-family: "Press Start 2P", monospace;
+  text-align: center;
 }
-
-h1{
-    margin-top:0px; 
-    font-family: "Press Start 2P", system-ui, sans-serif;
-    font-optical-sizing: auto;
-    font-weight: bold; 
-    font-style: normal;
-    font-size: clamp(24px, 4vw, 50px);
+/* Fixed device viewport, independent of the browser window. */
+.preview {
+  width: 240px;
+  height: 280px;
+  padding: 12px;
+  background: url("Images/mobile-background.png") center / cover;
+  image-rendering: pixelated;
+  box-shadow: 0 12px 32px #44364f33;
 }
-
+h1 {
+  margin: 0 0 10px;
+  font-size: 15px;
+  line-height: 20px;
+  text-shadow: 1px 2px #fff7e4;
+}
 .card {
-    background: rgba(255, 247, 228, 0.85);
-    border-radius: 18px;
-    padding: 20px 6vw 60px;
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(2px);
-    max-width: 520px;
-    width: min(520px, 90vw);
-    border: 2px solid #f6d9a7;
-    margin-top: 50px;
+  height: 226px;
+  padding: 10px;
+  border: 2px solid #f6d9a7;
+  border-radius: 16px;
+  background: rgba(255, 247, 228, 0.88);
+  box-shadow: 0 4px 12px #44364f26;
 }
-
-.btns {
-    display:flex;
-    flex-direction: row;
-    gap: 20px;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-p {
-    font-family: "Press Start 2P", system-ui, sans-serif;
-    font-optical-sizing: auto;
-    font-weight: normal; 
-    font-style: normal;
-    font-size: 30px; 
-}
-
+.screen { height: 100%; display: flex; flex-direction: column; gap: 6px; }
+[hidden] { display: none !important; }
+h2 { margin: 0 0 2px; font-size: 11px; line-height: 16px; font-weight: normal; }
+.durations, .actions { display: flex; flex-direction: column; gap: 6px; }
+.actions { margin-top: auto; }
 button {
-  background-color: #fae5b2;
-  position: relative;
-  font-family: "Press Start 2P", system-ui, sans-serif;
-  color: #222;
-  border: none;
-  padding: clamp(10px, 3vw, 30px) clamp(16px, 4vw, 50px);
+  width: 100%;
+  min-height: 38px;
+  padding: 4px;
+  border: 2px solid transparent;
   border-radius: 8px;
-  font-size: clamp(16px, 3.5vw, 30px);
+  background: #fae5b2;
+  color: #44364f;
+  font: inherit;
+  font-size: 10px;
+  line-height: 16px;
   cursor: pointer;
-  transition: transform 0.08s ease, box-shadow 0.08s ease, background-color 0.2s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
-
-button:hover {
-  background-color: #fae5b2;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+button[aria-pressed="true"] {
+  border-color: #806292;
+  background: #f6d9a7;
+  box-shadow: inset 0 0 0 1px #fff7e4;
 }
-
-button:active {
-  transform: translateY(1px) scale(0.98);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
-.maintimer {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-top: 0px;
-    gap: 8px;
-}
-
-#timer{
-    padding-left: 20px;
-    padding-right: 10px;
-    font-size: clamp(40px, 8vw, 80px);
-    /* margin-top: 150px; */
-}
-
-.resetPauseBtn {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    justify-content: center;
-    margin-bottom: 0px; 
-}
-
-#btnStart {
-    margin-bottom: 20px;    
-}
-
-.resetPauseBtn {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    justify-content: center;
-    margin-bottom: 0px; 
-}
-
-@media (max-width: 520px) {
-  .btns, .resetPauseBtn {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .card {
-    width: calc(100% - 40px);
-    padding: 16px 4vw 40px;
-    margin-left: 16px;
-    margin-right: 16px;
-  }
-
-  #timer {
-    font-size: 32px;
-  }
-
-  h1{
-    font-size: 30px;
-  }
-
-  body{
-    background-size: cover; 
-    background-position: center;
-    background-image: url(Images/mobile-background.png);
-  }
-
+button:disabled { opacity: 0.5; cursor: default; }
+button:focus-visible { outline: 2px solid #806292; outline-offset: 1px; }
+h2:focus { outline: none; }
+button:active:not(:disabled) { transform: translateY(1px); }
+#timer { margin: 12px 0 4px; font-size: 32px; line-height: 48px; }
+.message { margin: 0; font-size: 10px; line-height: 18px; }
+.celebration { margin-top: 28px; color: #705583; }
+@media (hover: hover) {
+  button:hover:not(:disabled) { box-shadow: 0 2px 5px #44364f33; }
 }

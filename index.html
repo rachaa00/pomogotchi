@@ -1,32 +1,45 @@
-<html>
-    <head>
-        <link rel="stylesheet" href="main.css">
-        <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-
-    <body>
-        <h1>Pomogotchi</h1>
-        <main class="card">
-            <div class="btns">
-                <button id = "btn15" >15 min</button>
-                <button id = "btn30" >30 min</button>
-                <button id = "btn60" >60 min</button>
-            </div>
-            <div class="maintimer">
-                <p id = "timer">00:00:00</p>
-            </div>
-            <div>
-                <button id = "btnStart">Start</button>
-            </div>
-            <div class="resetPauseBtn"> 
-                <button id = "btnReset">Reset</button>
-                <button id = "btnPause">Pause</button>
-            </div>
-        </main>
-        <audio id="timerSound" src="sounds/end-sound.mp3"></audio>
-        <script src="main.js"></script>
-        </body>
-            
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pomogotchi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <main class="preview" aria-label="Pomogotchi, 240 by 280 pixel preview">
+    <h1>Pomogotchi</h1>
+    <div class="card">
+      <section id="choose-screen" class="screen" aria-labelledby="choose-title">
+        <h2 id="choose-title" tabindex="-1">Choose time</h2>
+        <div class="durations" role="group" aria-label="Session duration">
+          <button id="btn15" data-minutes="15" aria-pressed="false">15 min</button>
+          <button id="btn30" data-minutes="30" aria-pressed="false">30 min</button>
+          <button id="btn60" data-minutes="60" aria-pressed="false">60 min</button>
+        </div>
+        <button id="btnStart" disabled>Start</button>
+      </section>
+      <section id="focus-screen" class="screen" aria-labelledby="focus-title" hidden>
+        <h2 id="focus-title" tabindex="-1">Focus time</h2>
+        <p id="timer" role="timer" aria-label="0 minutes 0 seconds remaining">00:00</p>
+        <p class="message">Stay focused!</p>
+        <div class="actions">
+          <button id="btnPause">Pause</button>
+          <button id="btnReset">Reset</button>
+        </div>
+      </section>
+      <section id="done-screen" class="screen" aria-labelledby="done-title" hidden>
+        <h2 id="done-title" tabindex="-1">Time is up!</h2>
+        <p class="message celebration">Great job!</p>
+        <div class="actions">
+          <button id="btnAgain">Again</button>
+          <button id="btnHome">Home</button>
+        </div>
+      </section>
+    </div>
+  </main>
+  <audio id="timerSound" src="sounds/end-sound.mp3" preload="auto"></audio>
+  <script src="main.js"></script>
+</body>
 </html>
